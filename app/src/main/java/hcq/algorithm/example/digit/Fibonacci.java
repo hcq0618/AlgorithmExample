@@ -1,9 +1,9 @@
-package hcq.algorithm.example;
+package hcq.algorithm.example.digit;
 
 /**
  * 问题1：定义Fibonacci数列如下：
  * /  0                      n=0
- * f(n)=      1                      n=1
+ *    f(n)=1                 n=1
  * \  f(n-1)+f(n-2)          n>=2
  * 输入n，用最快的方法求该数列的第n项。
  * <p/>
@@ -12,9 +12,9 @@ package hcq.algorithm.example;
  * <p/>
  * 如下公式：
  * /      1                                      n=1
- * f(n)=     2                                    n=2
- * 4                                      n=3       //111, 12, 21, 3
- * \  f(n-1)+(f-2)+f(n-3)                        n>3
+ *       f(n)=2                                  n=2
+ *       4                                       n=3       //111, 12, 21, 3
+ * \     f(n-1)+(f-2)+f(n-3)                     n>3
  * <p/>
  * Created by hcq0618 on 2015/12/25.
  */

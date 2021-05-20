@@ -1,4 +1,4 @@
-package hcq.algorithm.example;
+package hcq.algorithm.example.digit;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,68 +10,70 @@ import java.util.Random;
  */
 public class PokerStraight {
 
-    public void solution(int[] pokers) {
-        if (pokers == null) {
-            pokers = new int[5];
-            //随机五张牌 大小王看成是0
-            Random random = new Random();
+    public static void main(String[] args) {
+        int[] pokers = new int[5];
+        //随机五张牌 0看成是大小王
+        Random random = new Random();
 
-            for (int i = 0; i < pokers.length; i++) {
-                pokers[i] = random.nextInt(14);
-                System.out.println(pokers[i]);
-            }
+        for (int i = 0; i < pokers.length; i++) {
+            pokers[i] = random.nextInt(14);
+            System.out.println(pokers[i]);
         }
 
+        solution(pokers);
+        solution(new int[]{1, 3, 2, 4, 6, 5, 8, 7, 9, 12, 13, 11, 0});
+    }
+
+    public static void solution(int[] pokers) {
         int pokersSize = pokers.length;
         int zeroCount = 0;
 
         ArrayList<Integer> newPokers = new ArrayList<>(pokersSize);
         //先从小到大做直接插入排序
-        for (int i = 0; i < pokersSize; i++) {
+        for (int poker : pokers) {
 
             //0为大小王 可以代表任何数 所以跳过不加入排序后的数组 但要计数
-            if (pokers[i] == 0) {
+            if (poker == 0) {
                 zeroCount++;
                 continue;
             }
 
-            for (int j = 0; j < pokersSize; j++) {
-                if (j >= newPokers.size()) {
-                    newPokers.add(pokers[i]);
-                    break;
-                }
+            if (newPokers.isEmpty()) {
+                newPokers.add(poker);
+                continue;
+            }
 
-                if (pokers[i] >= newPokers.get(j)) {
-                    if (j + 1 < newPokers.size()) {
-                        if (pokers[i] <= newPokers.get(j + 1)) {
-                            newPokers.add(j + 1, pokers[i]);
+            for (int i = 0; i < pokersSize; i++) {
+                if (poker >= newPokers.get(i)) {
+                    if (i + 1 < newPokers.size()) {
+                        if (poker <= newPokers.get(i + 1)) {
+                            newPokers.add(i + 1, poker);
                             break;
                         }
                     } else {
-                        newPokers.add(pokers[i]);
+                        newPokers.add(poker);
                         break;
                     }
                 } else {
-                    if (j - 1 <= 0) {
-                        newPokers.add(0, pokers[i]);
-                        break;
-                    }
+                    newPokers.add(Math.max(i - 1, 0), poker);
+                    break;
                 }
             }
         }
 
-        boolean isStraight = true;
         //如果原数组中有大小王 则size！=pokersSize;
+        boolean isStraight = true;
         int size = newPokers.size();
         //每相邻两个数的差之和
         int sum = 0;
 
         for (int i = 0; i < size; i++) {
             //输出排序后的数组
-            System.out.println(newPokers.get(i));
+            //System.out.println(newPokers.get(i));
 
             if (i + 1 < size) {
-                if (newPokers.get(i) == newPokers.get(i + 1)) {
+                if (newPokers.get(i)
+                        .equals(newPokers.get(i + 1))) {
                     //有对子就不是顺子
                     isStraight = false;
                     break;

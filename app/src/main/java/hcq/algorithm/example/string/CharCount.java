@@ -1,4 +1,4 @@
-package hcq.algorithm.example;
+package hcq.algorithm.example.string;
 
 /**
  * 在一个字符串中找到第一个只出现一次的字符。如输入abaccdeff，则输出b。
@@ -7,12 +7,16 @@ package hcq.algorithm.example;
  */
 public class CharCount {
 
-    //一个char占两个字节 16位 所以表示char有2^16种可能 
-    // 创建一个简单的哈希表 每个位置下标代表char的ASCII码值 所存的值为出现的计数
-    private int[] hashTable = new int[(int) Math.pow(2, 16)];
+    public static void main(String[] args) {
+        charCount("abaccdeff");
+    }
 
     //时间复杂度O(n) 不需要嵌套循环
-    public void charCount(String origin) {
+    public static void charCount(String origin) {
+        //一个char占两个字节=16位 所以表示char有2^16种可能
+        //创建一个简单的哈希表 每个位置下标代表char的ASCII码值 所存的值为出现的计数
+        //https://blog.csdn.net/lenfranky/article/details/89639320
+        int[] hashTable = new int[(int) Math.pow(2, 16)];
 
         int len = origin.length();
         for (int i = 0; i < len; i++) {

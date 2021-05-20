@@ -1,4 +1,4 @@
-package hcq.algorithm.example;
+package hcq.algorithm.example.string;
 
 /**
  * 输入两个字符串，从第一字符串中删除第二个字符串中所有的字符。例如，输入”They are students.”和”aeiou”，则删除之后的第一个字符串变成”Thy r stdnts.”。
@@ -9,11 +9,14 @@ package hcq.algorithm.example;
  */
 public class StringDelete {
 
-    //一个char占两个字节 16位 所以表示char有2^16种可能 
-    // 创建一个简单的哈希表 每个位置下标代表char的ASCII码值 所存的值为出现的计数
-    private int[] hashTable = new int[(int) Math.pow(2, 16)];
+    public static void main(String[] args) {
+        solution("They are students.", "aeiou");
+    }
 
-    public void solution(String origin, String delStr) {
+    public static void solution(String origin, String delStr) {
+        //一个char占两个字节=16位 所以表示char有2^16种可能
+        // 创建一个简单的哈希表 每个位置下标代表char的ASCII码值 所存的值为出现的计数
+        int[] hashTable = new int[(int) Math.pow(2, 16)];
 
         //把要删除字符串的字符标记为1
         int len = delStr.length();

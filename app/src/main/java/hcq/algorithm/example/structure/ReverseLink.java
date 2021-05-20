@@ -1,4 +1,4 @@
-package hcq.algorithm.example;
+package hcq.algorithm.example.structure;
 
 /**
  * 输入一个链表的头结点，反转该链表，并返回反转后链表的头结点。
@@ -10,29 +10,28 @@ package hcq.algorithm.example;
 public class ReverseLink {
 
     public static class Node {
-        int n;
         Node next;
 
-        public Node(int n, Node next) {
-            this.n = n;
+        public Node(Node next) {
             this.next = next;
         }
     }
 
     public Node solution(Node node) {
-        if (node == null)
+        if (node == null) {
             return null;
+        }
 
         Node next = node.next;
         node.next = null;
         Node preNode = node;
 
         while (next != null) {
-            Node nextnext = next.next;
+            Node nextAndNext = next.next;
             next.next = preNode;
-            preNode = next;
 
-            next = nextnext;
+            preNode = next;
+            next = nextAndNext;
         }
 
         return preNode;
