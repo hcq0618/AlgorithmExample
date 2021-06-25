@@ -1,4 +1,4 @@
-package hcq.algorithm.example.string;
+package hcq.algorithm.example.interviews.lazada;
 
 /**
  * 两个字符串换a和b 如果可以交换a中的两个字符 使得a与b相等 则返回true 否则返回false

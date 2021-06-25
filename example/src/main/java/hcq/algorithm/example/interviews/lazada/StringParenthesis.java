@@ -1,4 +1,4 @@
-package hcq.algorithm.example.string;
+package hcq.algorithm.example.interviews.lazada;
 
 import java.util.Stack;
 

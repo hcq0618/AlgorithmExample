@@ -32,11 +32,11 @@ public class CountSort {
         }
 
         int sortedIndex = 0;
-        for (int j = 0; j < bucketLen; j++) {
-            while (bucket[j] > 0) {
-                original[sortedIndex] = j;
+        for (int i = 0; i < bucketLen; i++) {
+            while (bucket[i] > 0) {
+                original[sortedIndex] = i;
                 sortedIndex++;
-                bucket[j]--;
+                bucket[i]--;
             }
         }
         return original;
@@ -44,7 +44,7 @@ public class CountSort {
 
     private static int[] getMinAndMaxValue(int[] arr) {
         int maxValue = arr[0];
-        int minValue = arr[0];
+        int minValue = maxValue;
         for (int value : arr) {
             if (maxValue < value) {
                 maxValue = value;
