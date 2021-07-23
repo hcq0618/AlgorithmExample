@@ -17,21 +17,16 @@ public class ReverseLink {
         }
     }
 
-    public Node solution(Node node) {
-        if (node == null) {
-            return null;
-        }
+    public Node solution(Node head) {
+        Node preNode = null;
+        Node curNode = head;
+        Node nextNode;
 
-        Node next = node.next;
-        node.next = null;
-        Node preNode = node;
-
-        while (next != null) {
-            Node nextAndNext = next.next;
-            next.next = preNode;
-
-            preNode = next;
-            next = nextAndNext;
+        while (curNode != null) {
+            nextNode = curNode.next;
+            curNode.next = preNode;
+            preNode = curNode;
+            curNode = nextNode;
         }
 
         return preNode;
