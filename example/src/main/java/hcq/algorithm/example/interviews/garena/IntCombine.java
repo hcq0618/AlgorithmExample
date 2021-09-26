@@ -1,4 +1,4 @@
-package hcq.algorithm.example.interviews.sea;
+package hcq.algorithm.example.interviews.garena;
 
 import java.util.Scanner;
 
